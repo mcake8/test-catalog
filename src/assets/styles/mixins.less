@@ -1,0 +1,44 @@
+.transition(@type: linear, @time: 0.2s) {
+  transition: @time @type;
+}
+.svg-in(@name: "", @fill: "", @pos: after, @w: auto, @h: auto, @bsize: contain) {
+  @color: escape(@fill);
+  @icon: url("~@/assets/img/icons/@{name}.svg?fill=@{color}");
+  & when (@pos = before) {
+    &:before {
+      content: "";
+      width: @w;
+      height: @h;
+      background-image: @icon;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: @bsize;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+  & when (@pos = after) {
+    &:after {
+      content: "";
+      width: @w;
+      height: @h;
+      background-image: @icon;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: @bsize;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+  & when (@pos = background) {
+    background-image: @icon;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: @bsize;
+  }
+}
+.flex-center(@justify: space-around) {
+  display: flex;
+  align-items: center;
+  justify-content: @justify;
+}
